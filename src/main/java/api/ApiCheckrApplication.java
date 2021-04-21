@@ -11,7 +11,8 @@ public class ApiCheckrApplication {
 	public static void main(String[] args) {
 		
 		Rover rover = new Rover();
-		rover.setPosition(1, 2, 'W');
+		rover.setPosition(1, 2, 'N');
+		rover.exec("LMLMLMLMM");
 		rover.getPosition().print();
 		
 		//SpringApplication.run(ApiCheckrApplication.class, args);

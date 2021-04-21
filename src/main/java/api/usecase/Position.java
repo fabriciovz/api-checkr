@@ -92,10 +92,10 @@ public class Position {
 	public void setY(int y) {
 		this.y = y;
 	}
-	public void forwardY(){
+	public void upY(){
 		this.y++;
 	}
-	public void backwardY(){
+	public void downY(){
 		this.y--;
 	}
 	public Dir getDir() {
