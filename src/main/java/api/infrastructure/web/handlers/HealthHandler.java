@@ -1,26 +1,18 @@
 package api.infrastructure.web.handlers;
+import org.springframework.web.bind.annotation.*;
+import java.util.HashMap;
 
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-
-import org.springframework.web.bind.annotation.CrossOrigin;
-//import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.RequestBody;
-
-
-@Controller
-@RequestMapping(path="/api",produces="application/json")
+@RestController
 @CrossOrigin(origins="*")
 public class HealthHandler {
 	
-	/*	@PostMapping(value = "/move")
-	public void create(@RequestBody RoberPosition item) {  //ResponseEntity<?>
-
-		//return service.create(item).getResponse();	
-	}*/
-
+	@GetMapping("/health")
+    public HashMap<String, String>  getMessage() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("status", "UP");
+        return map;
+    }
 }
 
 

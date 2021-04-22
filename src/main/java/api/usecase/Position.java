@@ -1,12 +1,5 @@
 package api.usecase;
 
-enum Dir {
-	  N,
-	  E,
-	  S,
-	  W
-}
-
 public class Position {
 	
 	private int x;
@@ -18,20 +11,25 @@ public class Position {
 		this.y=0;
 		this.dir=Dir.N;
 	}
-	public Position(int x, int y, char dir) {
+	public Position(int x, int y, char dir) throws Exception {
 		
 		if(checkXY(x,y) && checkDir(dir)) {
 			this.x=x;
 			this.y=y;
 			this.dir=charToDir(dir);
 		}
-		
+		else {
+			throw new Exception("Incorrect arguments");
+		}
 	}
-	public Position(int x, int y, Dir dir) {
+	public Position(int x, int y, Dir dir) throws Exception {
 		if(checkXY(x,y)) {
 			this.x=x;
 			this.y=y;
 			this.dir=dir;
+		}
+		else {
+			throw new Exception("Incorrect arguments");
 		}
 	}
 	
@@ -55,7 +53,7 @@ public class Position {
 	}
 	
 	public Dir charToDir(char dir) {
-		Dir direction = Dir.N;
+		Dir direction;
 		switch (dir) 
 	     {
 	      case 'N':  
@@ -70,7 +68,10 @@ public class Position {
 	      case 'W':  
 	    	  direction = Dir.W;
 	      break;
-	    }
+	      default:
+			  direction = Dir.N;
+
+		 }
 		return direction;
 	}
 	

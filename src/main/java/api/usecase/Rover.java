@@ -3,18 +3,15 @@ package api.usecase;
 public class Rover {
 
 	Position postion;
-	
-	public Rover() {
-		
+
+	public Rover(Position position) {
+		this.setPosition(position);
 	}
 	
 	public void exec(String commands) {		
 		char[] cmds = commands.toCharArray();
-  		System.out.println(cmds.length);
 
 		for (char cmd : cmds) { 
-	  		System.out.println(cmd);
-
 			traslate(cmd);
 		}
 	}
@@ -33,7 +30,6 @@ public class Rover {
 	    }
 	}
 	public void move() {
-  		System.out.println("move");
 
 		switch (this.postion.getDir()) {
 		  case N:
@@ -51,27 +47,18 @@ public class Rover {
 	    }
 	}
 	
-	public void setPosition(int x, int y, char dir) {
-		Position position = new Position(x, y, dir);
-		this.postion=position;
-	}
-	
 	public void turnLeft() {
-  		System.out.println("left");
-
-		Dir new_dir = (this.postion.getDir().ordinal() -1 < 0)?Dir.W: Dir.values()[(this.postion.getDir().ordinal() -1)] ;
-						
+		Dir new_dir = (this.postion.getDir().ordinal() -1 < 0)?Dir.W: Dir.values()[(this.postion.getDir().ordinal() -1)] ;			
 		this.postion.setDir(new_dir);
 	}
 	public void turnRight() {
-  		System.out.println("right");
-
-		Dir new_dir = (this.postion.getDir().ordinal() + 1 > 3)?Dir.N: Dir.values()[(this.postion.getDir().ordinal() +1)] ;
-						
+		Dir new_dir = (this.postion.getDir().ordinal() + 1 > 3)?Dir.N: Dir.values()[(this.postion.getDir().ordinal() +1)] ;			
 		this.postion.setDir(new_dir);
-		
 	}
 	public Position getPosition() {
 		return this.postion;
+	}
+	public void setPosition(Position position) {
+		this.postion=position;
 	}
 }
