@@ -1,4 +1,7 @@
-package api.usecase;
+package api.domain;
+
+import api.domain.Dir;
+import api.domain.Position;
 
 public class Rover {
 
@@ -48,7 +51,7 @@ public class Rover {
 	}
 	
 	public void turnLeft() {
-		Dir new_dir = (this.postion.getDir().ordinal() -1 < 0)?Dir.W: Dir.values()[(this.postion.getDir().ordinal() -1)] ;			
+		Dir new_dir = (this.postion.getDir().ordinal() -1 < 0)?Dir.W: Dir.values()[(this.postion.getDir().ordinal() -1)] ;
 		this.postion.setDir(new_dir);
 	}
 	public void turnRight() {
