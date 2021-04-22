@@ -13,7 +13,7 @@ public class Position {
 	}
 	public Position(int x, int y, char dir) throws Exception {
 		
-		if(checkXY(x,y) && checkDir(dir)) {
+		if(checkX(x) && checkY(y) && checkDir(dir)) {
 			this.x=x;
 			this.y=y;
 			this.dir=charToDir(dir);
@@ -23,7 +23,7 @@ public class Position {
 		}
 	}
 	public Position(int x, int y, Dir dir) throws Exception {
-		if(checkXY(x,y)) {
+		if(checkX(x) && checkY(y)) {
 			this.x=x;
 			this.y=y;
 			this.dir=dir;
@@ -32,9 +32,15 @@ public class Position {
 			throw new Exception("Incorrect arguments");
 		}
 	}
-	
-	public boolean checkXY(int x, int y) {
-		if(x<0 || y<0) {
+
+	public boolean checkX(int x) {
+		if(x<0) {
+			return false;
+		}
+		return true;
+	}
+	public boolean checkY(int y) {
+		if(y<0) {
 			return false;
 		}
 		return true;
@@ -79,25 +85,33 @@ public class Position {
 		return x;
 	}
 	public void setX(int x) {
-		this.x = x;
+		if(this.checkX(x)) {
+			this.x = x;
+		}
 	}
 	public void forwardX(){
 		this.x++;
 	}
 	public void backwardX(){
-		this.x--;
+		if(this.checkX(this.getX()-1)) {
+			this.x--;
+		}
 	}
 	public int getY() {
 		return y;
 	}
 	public void setY(int y) {
-		this.y = y;
+		if(this.checkY(y)) {
+			this.y = y;
+		}
 	}
 	public void upY(){
 		this.y++;
 	}
 	public void downY(){
-		this.y--;
+		if(this.checkY(this.getY()-1)) {
+			this.y--;
+		}
 	}
 	public Dir getDir() {
 		return dir;
