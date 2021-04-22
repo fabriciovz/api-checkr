@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import api.domain.Dir;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import api.usecase.*;
-import api.usecase.Position;
+import api.domain.Position;
 
 class PositionTests {
 
@@ -136,50 +136,26 @@ class PositionTests {
 				
 		assertEquals(expectedPrint, outputStreamCaptor.toString().trim());
 	}
-	
-	@Test
-    @DisplayName("When translate chars in (N, E, S, W) to Dir enum, then should works")
-	void checkCharToDirTest() {
-		Dir dir = position.charToDir('N');
-		Dir dir2 = position.charToDir('E');
-		Dir dir3 = position.charToDir('S');
-		Dir dir4 = position.charToDir('W');
 
-		assertEquals(Dir.N, dir,"dir should be equal to N");
-		assertEquals(Dir.E, dir2,"dir2 should be equal to E");
-		assertEquals(Dir.S, dir3,"dir3 should be equal to S");
-		assertEquals(Dir.W, dir4,"dir4 should be equal to W");
-	}
-
-	@Test
-	@DisplayName("When translate char not in (N, E, S, W) to Dir enum, then shouldn't works")
-	void checkBadCharToDirTest() {
-		Dir dir = position.charToDir('Z');
-		Dir dir2 = position.charToDir('B');
-
-		assertEquals(Dir.N, dir,"dir should be equal to N");
-		assertEquals(Dir.N, dir2,"dir2 should be equal to N");
-	}
-
-	@Test
-	@DisplayName("When checking coordinates in (N,E,S,W), should return true")
-	void checkDirTest() {
-
-		assertTrue(position.checkDir('N'));
-		assertTrue(position.checkDir('E'));
-		assertTrue(position.checkDir('S'));
-		assertTrue(position.checkDir('W'));
-	}
-
-	@Test
-	@DisplayName("When checking coordinates not in (N,E,S,W), should return false")
-	void checkBadDirTest() {
-
-		assertFalse(position.checkDir('Z'));
-		assertFalse(position.checkDir('B'));
-		assertFalse(position.checkDir('C'));
-		assertFalse(position.checkDir('L'));
-	}
+//	@Test
+//	@DisplayName("When checking coordinates in (N,E,S,W), should return true")
+//	void checkDirTest() {
+//
+//		assertTrue(position.checkDir('N'));
+//		assertTrue(position.checkDir('E'));
+//		assertTrue(position.checkDir('S'));
+//		assertTrue(position.checkDir('W'));
+//	}
+//
+//	@Test
+//	@DisplayName("When checking coordinates not in (N,E,S,W), should return false")
+//	void checkBadDirTest() {
+//
+//		assertFalse(position.checkDir('Z'));
+//		assertFalse(position.checkDir('B'));
+//		assertFalse(position.checkDir('C'));
+//		assertFalse(position.checkDir('L'));
+//	}
 
 	@Test
 	@DisplayName("When checkX to value lower than 0, then should return false")
@@ -210,48 +186,6 @@ class PositionTests {
 	}
 
 	@Test
-	@DisplayName("When create a Position object with x>=0, y>=0, (N,E,S,W =>'char') values, then shouldn't return an exception")
-	void checkPositionConst2Test()  {
-
-		assertDoesNotThrow(() -> {
-			new Position(1,1,'N');
-		});
-
-		assertDoesNotThrow(() -> {
-			new Position(0,10,'W');
-		});
-	}
-
-
-	@Test
-	@DisplayName("When create a Position object with not x>=0, y>=0, (N,E,S,W =>'char')  values, then should return an exception")
-	void checkBadPositionConst2Test()  {
-
-		Exception exception = assertThrows(Exception.class, () -> {
-			new Position(2,5,'Z');
-		});
-
-		Exception exception2 = assertThrows(Exception.class, () -> {
-			new Position(-1,5,'N');
-		});
-
-		Exception exception3 = assertThrows(Exception.class, () -> {
-			new Position(1,-1,'N');
-		});
-
-		String expectedMessage = "Incorrect arguments";
-
-		String actualMessage = exception.getMessage();
-		String actualMessage2 = exception2.getMessage();
-		String actualMessage3 = exception3.getMessage();
-
-		assertTrue(actualMessage.contains(expectedMessage));
-		assertTrue(actualMessage2.contains(expectedMessage));
-		assertTrue(actualMessage3.contains(expectedMessage));
-	}
-
-
-	@Test
 	@DisplayName("When create a Position object with x>=0, y>=0, (N,E,S,W =>'Dir enum') values, then shouldn't return an exception")
 	void checkPositionConst3Test()  {
 
@@ -262,27 +196,6 @@ class PositionTests {
 		assertDoesNotThrow(() -> {
 			new Position(3,50,Dir.E);
 		});
-	}
-
-	@Test
-	@DisplayName("When create a Position object with not x>=0, y>=0  values, then should return an exception")
-	void checkBadPositionConst3Test()  {
-
-		String expectedMessage = "Incorrect arguments";
-
-		Exception exception = assertThrows(Exception.class, () -> {
-			new Position(-1,1,Dir.N);
-		});
-
-		Exception exception2 = assertThrows(Exception.class, () -> {
-			new Position(1,-1,Dir.E);
-		});
-
-		String actualMessage = exception.getMessage();
-		String actualMessage2 = exception2.getMessage();
-
-		assertTrue(actualMessage.contains(expectedMessage));
-		assertTrue(actualMessage2.contains(expectedMessage));
 	}
 
 }

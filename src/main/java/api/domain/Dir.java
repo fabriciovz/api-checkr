@@ -1,4 +1,4 @@
-package api.usecase;
+package api.domain;
 
 public enum Dir {
 	  N,

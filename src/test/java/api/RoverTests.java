@@ -1,8 +1,8 @@
 package api;
 
-import api.usecase.Dir;
-import api.usecase.Position;
-import api.usecase.Rover;
+import api.domain.Dir;
+import api.domain.Position;
+import api.domain.Rover;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
