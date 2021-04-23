@@ -1,29 +1,23 @@
 package api.domain;
 
-import api.domain.Dir;
-
 public class Position {
-	
 	private int x;
 	private int y;
 	private Dir dir;
 	
 	public Position() {
-		this.x=0;
-		this.y=0;
-		this.dir=Dir.N;
+		this.setX(0);
+		this.setY(0);
+		this.setDir(Dir.N);
 	}
 	public Position(int x, int y, Dir dir) {
+		this();
 		if(checkX(x) && checkY(y)) {
-			this.x=x;
-			this.y=y;
-			this.dir=dir;
-		}
-		else {
-			new Position();
+			this.setX(x);
+			this.setY(y);
+			this.setDir(dir);
 		}
 	}
-
 	public boolean checkX(int x) {
 		if(x<0) {
 			return false;
@@ -36,7 +30,6 @@ public class Position {
 		}
 		return true;
 	}
-	
 	public int getX() {
 		return x;
 	}

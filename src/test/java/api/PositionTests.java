@@ -137,36 +137,16 @@ class PositionTests {
 		assertEquals(expectedPrint, outputStreamCaptor.toString().trim());
 	}
 
-//	@Test
-//	@DisplayName("When checking coordinates in (N,E,S,W), should return true")
-//	void checkDirTest() {
-//
-//		assertTrue(position.checkDir('N'));
-//		assertTrue(position.checkDir('E'));
-//		assertTrue(position.checkDir('S'));
-//		assertTrue(position.checkDir('W'));
-//	}
-//
-//	@Test
-//	@DisplayName("When checking coordinates not in (N,E,S,W), should return false")
-//	void checkBadDirTest() {
-//
-//		assertFalse(position.checkDir('Z'));
-//		assertFalse(position.checkDir('B'));
-//		assertFalse(position.checkDir('C'));
-//		assertFalse(position.checkDir('L'));
-//	}
-
 	@Test
 	@DisplayName("When checkX to value lower than 0, then should return false")
-	void checkXTest() {
+	void checkBadXTest() {
 		assertFalse(position.checkX(-1));
 		assertFalse(position.checkX(-2));
 	}
 
 	@Test
 	@DisplayName("When checkX to value upper or equal to 0, then should return true")
-	void checkBadXTest() {
+	void checkXTest() {
 		assertTrue(position.checkX(0));
 		assertTrue(position.checkX(100));
 	}
@@ -186,16 +166,26 @@ class PositionTests {
 	}
 
 	@Test
-	@DisplayName("When create a Position object with x>=0, y>=0, (N,E,S,W =>'Dir enum') values, then shouldn't return an exception")
-	void checkPositionConst3Test()  {
+	@DisplayName("When create a Position object with x>=0, y>=0, (N,E,S,W =>'Dir enum') values, then should works")
+	void checkPositionConst2Test()  {
 
-		assertDoesNotThrow(() -> {
-			new Position(1,1,Dir.N);
-		});
+    	Position position = new Position(1,1,Dir.N);
 
-		assertDoesNotThrow(() -> {
-			new Position(3,50,Dir.E);
-		});
+		assertEquals(1, position.getX(),"X should be equal to 1");
+		assertEquals(1, position.getY(),"Y should be equal to 1");
+		assertEquals(Dir.N, position.getDir(),"Dir should be equal to N");
+
 	}
+
+	@Test
+	@DisplayName("When create a Position object with not x>=0, y>=0, (N,E,S,W =>'Dir enum') values, then should return a default Position")
+	void checkBadPositionConst2Test() {
+
+		Position position = new Position(-1,1,Dir.N);
+
+		assertEquals(0, position.getX(),"X should be equal to 0");
+		assertEquals(0, position.getY(),"Y should be equal to 0");
+		assertEquals(Dir.N, position.getDir(),"Dir should be equal to N");
+    }
 
 }
