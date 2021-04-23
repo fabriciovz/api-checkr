@@ -26,7 +26,7 @@ $ make app-stop
 
 If you want to check the endpoints with postman, you can download the environment and the collection file:
 
-https://github.com/fabriciovz/api-checkr/blob/master/src/main/resources/static/postman/collection.json
+https://github.com/fabriciovz/api-checkr/blob/master/src/main/resources/static/postman/api-checkr.json
 
 ### Something went wrong?
 
