@@ -5,6 +5,10 @@ This is an api developed in Spring Boot with Layer oriented architecture and Dom
 Java version: openjdk version "14.0.1"
 Maven: "3.6.3_1"
 
+### Mars Rovers Model
+
+![alt text](https://github.com/fabriciovz/api-checkr/blob/master/src/main/resources/static/imgs/rover.jpg?raw=true)
+
 ### Installation
 
 If you want to initialize the project, use this command (you'll create an image and container, then it run the docker container):
