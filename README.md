@@ -9,6 +9,19 @@ Maven: "3.6.3_1"
 
 ![alt text](https://github.com/fabriciovz/api-checkr/blob/master/src/main/resources/static/imgs/rover.jpg?raw=true)
 
+### Input and Output Examples:
+
+Test Input:
+5 5
+1 2 N
+LMLMLMLMM
+3 3 E
+MMRMMRMRRM
+
+Expected Output:
+1 3 N
+5 1 E
+
 ### Installation
 
 If you want to initialize the project, use this command (you'll create an image and container, then it run the docker container):
