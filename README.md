@@ -12,11 +12,13 @@ Maven: "3.6.3_1"
 ### Input and Output Examples:
 
 Test Input:
+```sh
 5 5
 1 2 N
 LMLMLMLMM
 3 3 E
 MMRMMRMRRM
+```
 
 Expected Output:
 1 3 N
