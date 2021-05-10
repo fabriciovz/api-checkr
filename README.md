@@ -21,8 +21,10 @@ MMRMMRMRRM
 ```
 
 Expected Output:
+```sh
 1 3 N
 5 1 E
+```
 
 ### Installation
 
